@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -28,6 +27,8 @@
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/premium.css">
     <link rel="stylesheet" href="css/Animations.css">
+    <link rel="stylesheet" href="css/personal.css">
+    <link rel="stylesheet" href="css/chat.css">
 </head>
 
 
@@ -53,7 +54,7 @@
             class="secondary-btn"
             type="button"
         >
-           ! Comming soon
+            الرسائل
         </button>
 
         <button
@@ -127,7 +128,12 @@
              TASKS
         =========================================== -->
 
-        <section>
+        <nav class="dash-tabs" aria-label="أقسام اللوحة">
+            <button type="button" class="dash-tab is-active" data-tab="team">مهام الفريق</button>
+            <button type="button" class="dash-tab" data-tab="personal">مهامي الشخصية</button>
+        </nav>
+
+        <section id="tab-team">
 
             <div class="section-heading">
 
@@ -160,6 +166,18 @@
 
         </section>
 
+        <!-- PERSONAL TASKS -->
+        <section id="tab-personal" hidden>
+            <div class="section-heading pt-heading">
+                <div>
+                    <span class="eyebrow">PERSONAL</span>
+                    <h2>مهامي الشخصية</h2>
+                </div>
+                <button id="pt-add" class="primary-btn" type="button">＋ مهمة جديدة</button>
+            </div>
+            <div id="pt-filters" class="pt-filters"></div>
+            <div id="pt-list" class="tasks-list"><div class="empty-state">جاري التحميل...</div></div>
+        </section>
 
     </main>
 
@@ -212,6 +230,14 @@
 
 
 
+    <div id="pt-modal" class="task-modal" hidden>
+        <div class="task-modal-overlay" id="pt-modal-overlay"></div>
+        <div class="task-modal-content" role="dialog" aria-modal="true">
+            <button class="task-modal-close" type="button" aria-label="إغلاق">×</button>
+            <div id="pt-modal-body"></div>
+        </div>
+    </div>
+
     <!-- ==========================================
          SCRIPTS
     =========================================== -->
@@ -223,6 +249,10 @@
     <script src="js/auth.js"></script>
 
     <script src="js/dashboard.js"></script>
+
+    <script src="js/personal.js"></script>
+
+    <script src="js/chat.js"></script>
 
 </body>
 

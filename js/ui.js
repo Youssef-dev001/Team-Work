@@ -446,3 +446,32 @@
         burst
     };
 })();
+
+
+
+
+// ===== Golden Custom Cursor =====
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    // Mouse Movement
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+    });
+
+    // Hover Effect
+    document.querySelectorAll('a, button, input, select, textarea')
+        .forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
+});

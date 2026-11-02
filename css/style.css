@@ -2019,19 +2019,42 @@ select:focus-visible {
 
 
 
+/* ===== Golden Custom Cursor ===== */
+
+* {
+    cursor: none !important;
+}
+
 .custom-cursor {
     position: fixed;
-    width: 10px;
-    height: 10px;
+    top: 0;
+    left: 0;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
     pointer-events: none;
     z-index: 999999;
 
-    background: #f6e1b3;
+    background: linear-gradient(
+        135deg,
+        #f6e1b3,
+        #c29c52
+    );
 
     box-shadow:
-        0 0 10px rgba(246, 225, 179, 0.7),
-        0 0 25px rgba(194, 156, 82, 0.4);
+        0 0 10px rgba(246, 225, 179, 0.8),
+        0 0 25px rgba(194, 156, 82, 0.45);
 
     transform: translate(-50%, -50%);
+    transition:
+        width 0.25s ease,
+        height 0.25s ease;
+}
+
+.custom-cursor.hover {
+    width: 20px;
+    height: 20px;
+    box-shadow:
+        0 0 15px rgba(246, 225, 179, 0.9),
+        0 0 35px rgba(194, 156, 82, 0.6);
 }

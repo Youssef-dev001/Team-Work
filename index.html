@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Flow — كل شغلك في مكان واحد</title>
+<meta name="description" content="نظّم مهامك، تابع شغلك، وخليك عارف عليك إيه وإمتى — كل ده في منصة واحدة.">
+<meta name="theme-color" content="#0b0a09">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preload" href="fonts/thmanyahserifdisplay-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="fonts/thmanyahserifdisplay-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/landing.css">
+  
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="mk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6e1b3"/><stop offset="1" stop-color="#c29c52"/></linearGradient>
+    <linearGradient id="fl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e8c987" stop-opacity="0"/><stop offset=".5" stop-color="#e8c987"/><stop offset="1" stop-color="#e8c987" stop-opacity="0"/></linearGradient>
+    <symbol id="mark" viewBox="0 0 32 32"><rect width="32" height="32" rx="10" fill="url(#mk)"/><path d="M7 21c5 0 5-10 9-10s4 10 9 10" fill="none" stroke="#1b1306" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ Top bar ============ -->
+<header class="topbar">
+  <nav class="pill" aria-label="التنقل الرئيسي">
+    <a class="brand" href="index.html" aria-label="Flow"><svg class="mark"><use href="#mark"/></svg><span>Flow</span></a>
+    <div class="links">
+      <a href="#about">عن المنصة</a>
+      <a href="#features">المميزات</a>
+      <a href="#how-it-works">بتشتغل إزاي؟</a>
+    </div>
+    <a class="btn btn-primary btn-sm" href="login.html">تسجيل الدخول</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <svg class="flow-bg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="fp fp1" d="M-40 640C220 640 260 300 560 330S820 700 1100 560 1380 180 1500 220"/>
+    <path class="fp fp2" d="M-40 760C260 780 380 480 640 520S900 820 1180 700 1400 420 1500 440"/>
+  </svg>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="kicker rv">Work, composed</span>
+      <h1 class="rv" style="--d:.08s">كل شغلك<br>في <em>مكان واحد<svg class="u" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9C70 2 150 14 297 4"/></svg></em>.</h1>
+      <p class="lede rv" style="--d:.16s">نظّم شغلك، تابع مهامك، وخليك عارف عليك إيه وإمتى — من غير ما تدوّر في كذا مكان.</p>
+      <div class="actions rv" style="--d:.24s">
+        <a class="btn btn-primary" href="login.html">ادخل على المنصة <svg><use href="#arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#how-it-works">اعرف أكتر</a>
+      </div>
+      <ul class="facts rv" style="--d:.32s"><li>مهام</li><li>مواعيد</li><li>روابط</li><li>ملفات</li></ul>
+    </div>
+
+    <div class="stage rv" style="--d:.2s" aria-hidden="true">
+      <div class="window" id="tilt">
+        <div class="win-bar"><i></i><i></i><i></i><span>مهام الأسبوع</span></div>
+        <div class="win-body">
+          <div class="ring-row">
+            <svg class="ring" viewBox="0 0 120 120"><circle class="trk" cx="60" cy="60" r="50"/><circle class="val" cx="60" cy="60" r="50" pathLength="100"/></svg>
+            <div class="ring-txt"><b>72%</b><span>نسبة الإنجاز</span></div>
+          </div>
+          <ul class="rows">
+            <li class="done"><span class="dot"><svg><use href="#check"/></svg></span><p>تجهيز عرض الأسبوع</p><em>تم</em></li>
+            <li class="prog"><span class="dot"></span><p>مراجعة الملفات المرفوعة</p><em>قيد التنفيذ</em></li>
+            <li><span class="dot"></span><p>رفع الفيديو النهائي</p><em>مطلوب منك</em></li>
+            <li><span class="dot"></span><p>اجتماع متابعة الفريق</p><em>الخميس</em></li>
+          </ul>
+        </div>
+      </div>
+      <div class="float f1"><span class="dot"><svg><use href="#check"/></svg></span>اتسلّمت مهمة جديدة</div>
+      <div class="float f2"><small>أقرب ميعاد</small><b>بكرة · 6 م</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Ticker ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span>مهام</span><i></i><span>مواعيد</span><i></i><span>روابط</span><i></i><span>ملاحظات</span><i></i><span>ملفات</span><i></i><span>متابعة</span><i></i>
+    <span>مهام</span><i></i><span>مواعيد</span><i></i><span>روابط</span><i></i><span>ملاحظات</span><i></i><span>ملفات</span><i></i><span>متابعة</span><i></i>
+  </div>
+</div>
+
+<!-- ============ About ============ -->
+<section id="about" class="about">
+  <div class="wrap">
+    <span class="kicker rv">About</span>
+    <h2 class="sr-only">كل اللي محتاجه عشان شغلك يمشي صح</h2>
+    <p class="statement" data-words>بدل ما مهامك ومواعيدك وملفاتك تبقى متوزعة في كذا مكان، المنصة بتجمعلك كل حاجة في مكان واحد، عشان تشتغل بشكل أوضح وأسهل.</p>
+  </div>
+</section>
+
+<!-- ============ Features (bento) ============ -->
+<section id="features" class="features">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">Features</span>
+      <h2>كل اللي محتاجه عشان شغلك يمشي صح</h2>
+    </div>
+
+    <div class="bento">
+      <article class="card c-a rv">
+        <span class="num">01</span>
+        <h3>نـظّـم مـهـامـك</h3>
+        <p>كل مهمة ليها تفاصيلها، ميعادها، والمطلوب منك — عشان تبقى عارف تعمل إيه بالظبط.</p>
+        <ul class="mini-tasks" aria-hidden="true">
+          <li class="done"><span class="dot"><svg><use href="#check"/></svg></span>تجهيز العرض<em>النهارده</em></li>
+          <li><span class="dot"></span>مراجعة التسليمات<em>بكرة</em></li>
+          <li><span class="dot"></span>رفع الفيديو النهائي<em>الخميس</em></li>
+        </ul>
+      </article>
+
+      <article class="card c-b rv" style="--d:.08s">
+        <span class="num">02</span>
+        <h3>تـابـع شـغـلـك</h3>
+        <p>اعرف إيه اللي خلص، وإيه اللي شغال عليه، وإيه اللي لسه محتاج منك شغل.</p>
+        <div class="bars" aria-hidden="true">
+          <div><span>خلصان</span><i style="--w:72%"></i></div>
+          <div><span>شغّال</span><i style="--w:45%"></i></div>
+          <div><span>لسه</span><i style="--w:18%"></i></div>
+        </div>
+      </article>
+
+      <article class="card c-c rv" style="--d:.12s">
+        <div class="c-text">
+          <span class="num">03</span>
+          <h3>كل حاجة في مكان واحد</h3>
+          <p>مهامك، مواعيدك، الروابط، الملاحظات والملفات المهمة كلها قدامك.</p>
+        </div>
+        <div class="cloud" aria-hidden="true">
+          <span>مهام</span><span>مواعيد</span><span class="hl">عرض_الأسبوع.pdf</span><span>روابط</span><span>ملاحظات</span><span>فيديو التسليم</span><span class="hl">ملفات</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ How it works ============ -->
+<section id="how-it-works" class="how">
+  <div class="wrap how-grid">
+    <div class="how-head rv">
+      <span class="kicker">How it works</span>
+      <h2>بتشتغل إزاي؟</h2>
+      <p>تلات خطوات بس، وتبقى جوه مساحة شغلك.</p>
+    </div>
+    <ol class="steps">
+      <li class="step rv"><span class="n">01</span><div><h3>سجّل دخولك</h3><p>استخدم بيانات حسابك عشان تدخل لمساحة الشغل الخاصة بيك.</p></div></li>
+      <li class="step rv" style="--d:.06s"><span class="n">02</span><div><h3>شوف المطلوب منك</h3><p>هتلاقي مهامك وتفاصيلها ومواعيدها كلها في مكان واحد.</p></div></li>
+      <li class="step rv" style="--d:.12s"><span class="n">03</span><div><h3>ابدأ وخلّص شغلك</h3><p>نفّذ المطلوب منك وحدّث حالة المهمة أول بأول.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-wrap">
+  <div class="wrap">
+    <div class="cta rv">
+      <span class="kicker">Get started</span>
+      <h2>يلا نبدأ الشغل؟</h2>
+      <p>سجّل دخولك وادخل على مساحة الشغل الخاصة بيك.</p>
+      <a class="btn btn-primary" href="login.html">تسجيل الدخول <svg><use href="#arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="brand" href="index.html"><svg class="mark"><use href="#mark"/></svg><span>Flow</span></a>
+    <span>معمول عشان شغلك يبقى أسهل وأوضح.</span>
+  </div>
+</footer>
+
+<script src="js/landing.js" defer></script>
+<div class="custom-cursor"></div>
+</body>
+</html>

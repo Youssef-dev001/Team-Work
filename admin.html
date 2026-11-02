@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0b0a09">
+    <title>الإدارة — منصة الفريق</title>
+    <link rel="preload" href="fonts/thmanyahserifdisplay-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="fonts/thmanyahserifdisplay-Bold.otf" as="font" type="font/otf" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/premium.css">
+    <link rel="stylesheet" href="css/Animations.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/founder-chat.css">
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="brand">منصة الفريق / Admin</a>
+        <button id="logout-btn" class="text-btn">تسجيل الخروج</button>
+    </header>
+
+    <main class="admin-page">
+        <section class="dashboard-header">
+            <div>
+                <span class="eyebrow">ADMIN CONTROL</span>
+                <h1>لوحة الإدارة</h1>
+                <p>إدارة الأعضاء والأسابيع والمهام ومتابعة التقدم.</p>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <span>الأعضاء</span>
+                <strong id="members-count">0</strong>
+            </article>
+            <article class="stat-card">
+                <span>إجمالي المهام</span>
+                <strong id="tasks-count">0</strong>
+            </article>
+            <article class="stat-card">
+                <span>المهام المكتملة</span>
+                <strong id="completed-count">0</strong>
+            </article>
+            <article class="stat-card">
+                <span>متوسط التقدم</span>
+                <strong id="average-progress">0%</strong>
+            </article>
+        </section>
+
+        <section class="admin-section">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">TEAM</span>
+                    <h2>أعضاء الفريق</h2>
+                </div>
+            </div>
+            <div id="admin-members" class="team-list"></div>
+        </section>
+
+        <section class="admin-section">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">TASK MANAGEMENT</span>
+                    <h2>إدارة المهام</h2>
+                </div>
+                <button id="add-task-btn" class="primary-btn">+ إضافة مهمة</button>
+            </div>
+
+            <div id="admin-tasks" class="tasks-list"></div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/founder-chat.js"></script>
+</body>
+</html>

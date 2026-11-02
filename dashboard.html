@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0b0a09">
+    <title>لوحتي — منصة الفريق</title>
+
+    <link rel="preload" href="fonts/thmanyahserifdisplay-Regular.otf" as="font" type="font/otf" crossorigin>
+<link rel="preload" href="fonts/thmanyahserifdisplay-Bold.otf" as="font" type="font/otf" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
+
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/premium.css">
+    <link rel="stylesheet" href="css/Animations.css">
+    <link rel="stylesheet" href="css/personal.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/founder-chat.css">
+</head>
+
+
+<body>
+
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
+
+    <header class="site-header">
+
+    <a
+        href="index.html"
+        class="brand"
+    >
+        منصة الفريق
+    </a>
+
+    <div class="header-actions">
+
+        <button
+            id="profile-btn"
+            class="secondary-btn"
+            type="button"
+        >
+            الرسائل
+        </button>
+
+        <button
+            id="logout-btn"
+            class="text-btn"
+            type="button"
+        >
+            تسجيل الخروج
+        </button>
+
+    </div>
+
+</header>
+
+
+    <!-- ==========================================
+         MAIN
+    =========================================== -->
+
+    <main class="dashboard-page">
+
+
+        <!-- ======================================
+             DASHBOARD HEADER
+        ======================================= -->
+
+        <section class="dashboard-header">
+
+            <div>
+
+                <span class="eyebrow">
+                    MY DASHBOARD
+                </span>
+
+
+                <h1>
+                    أهلاً،
+                    <span id="member-name">
+                        ...
+                    </span>
+                </h1>
+
+
+                <p id="week-label">
+                    جاري تحميل البيانات...
+                </p>
+
+            </div>
+
+
+            <!-- Progress -->
+
+            <div class="progress-card">
+
+                <span>
+                    تقدمك
+                </span>
+
+
+                <strong id="progress-value">
+                    0%
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             TASKS
+        =========================================== -->
+
+        <nav class="dash-tabs" aria-label="أقسام اللوحة">
+            <button type="button" class="dash-tab is-active" data-tab="team">مهام الفريق</button>
+            <button type="button" class="dash-tab" data-tab="personal">مهامي الشخصية</button>
+        </nav>
+
+        <section id="tab-team">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        YOUR TASKS
+                    </span>
+
+
+                    <h2>
+                        مهامك
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="tasks-list"
+                class="tasks-list"
+            >
+
+                <div class="empty-state">
+                    جاري تحميل المهام...
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- PERSONAL TASKS -->
+        <section id="tab-personal" hidden>
+            <div class="section-heading pt-heading">
+                <div>
+                    <span class="eyebrow">PERSONAL</span>
+                    <h2>مهامي الشخصية</h2>
+                </div>
+                <button id="pt-add" class="primary-btn" type="button">＋ مهمة جديدة</button>
+            </div>
+            <div id="pt-filters" class="pt-filters"></div>
+            <div id="pt-list" class="tasks-list"><div class="empty-state">جاري التحميل...</div></div>
+        </section>
+
+    </main>
+
+
+
+    <!-- ==========================================
+         TASK DETAILS MODAL
+    =========================================== -->
+
+    <div
+        id="task-modal"
+        class="task-modal"
+        hidden
+    >
+
+        <div
+            class="task-modal-overlay"
+            id="task-modal-overlay"
+        ></div>
+
+
+        <div
+            class="task-modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="task-modal-title"
+        >
+
+            <button
+                id="close-task-modal"
+                class="task-modal-close"
+                type="button"
+                aria-label="إغلاق"
+            >
+                ×
+            </button>
+
+
+            <div id="task-modal-body">
+
+                <!-- التفاصيل بتتحط هنا من JavaScript -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+
+
+
+    <div id="pt-modal" class="task-modal" hidden>
+        <div class="task-modal-overlay" id="pt-modal-overlay"></div>
+        <div class="task-modal-content" role="dialog" aria-modal="true">
+            <button class="task-modal-close" type="button" aria-label="إغلاق">×</button>
+            <div id="pt-modal-body"></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         SCRIPTS
+    =========================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="js/config.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/dashboard.js"></script>
+
+    <script src="js/personal.js"></script>
+
+    <script src="js/chat.js"></script>
+
+    <script src="js/founder-chat.js"></script>
+
+</body>
+
+</html>

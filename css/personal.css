@@ -1,0 +1,41 @@
+/* =========================================================
+   Personal tasks — يستخدم توكنز الهوية (tokens.css) فقط
+========================================================= */
+.dash-tabs{display:inline-flex;gap:6px;padding:5px;margin:0 0 28px;background:var(--surface);
+  border:1px solid var(--border);border-radius:999px;box-shadow:var(--ring)}
+.dash-tab{font:inherit;font-weight:500;color:var(--muted);background:none;border:0;cursor:pointer;
+  padding:10px 22px;border-radius:999px;transition:color .25s var(--ease-out),background .25s var(--ease-out)}
+.dash-tab:hover{color:var(--text)}
+.dash-tab.is-active{color:var(--accent-ink);
+  background:linear-gradient(180deg,var(--accent-light),var(--accent) 55%,var(--accent-dark))}
+
+.pt-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.pt-filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.pt-chip{font:inherit;font-size:14px;color:var(--muted);background:var(--surface);cursor:pointer;
+  border:1px solid var(--border);border-radius:999px;padding:7px 16px;transition:all .25s var(--ease-out)}
+.pt-chip:hover{border-color:var(--border-hover);color:var(--text)}
+.pt-chip.is-active{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
+
+.pt-meta{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:0 0 10px}
+.pt-meta .is-overdue{color:var(--danger)}
+.pt-card-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pt-card-actions .pt-spacer{flex:1}
+.pt-danger{color:var(--danger)!important}
+.task-card.is-done h3{opacity:.55;text-decoration:line-through}
+
+.pt-form{display:grid;gap:18px}
+.pt-form label{display:grid;gap:8px;color:var(--text-soft);font-size:14px}
+.pt-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pt-videos-head{color:var(--text-soft);font-size:14px;margin-bottom:8px}
+.pt-video-row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.pt-video-row input{flex:1;direction:ltr;text-align:left}
+.pt-video-row button{flex:none;width:42px;height:42px;font:inherit;font-size:20px;cursor:pointer;
+  color:var(--muted);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.pt-video-row button:hover{color:var(--danger);border-color:var(--danger)}
+.pt-add-video{font:inherit;color:var(--accent);background:none;border:1px dashed var(--accent-line);
+  border-radius:var(--radius-sm);padding:10px 14px;cursor:pointer;width:100%}
+.pt-add-video:hover{background:var(--accent-soft)}
+.pt-error{margin:0;color:var(--danger);background:var(--danger-soft);border-radius:var(--radius-sm);padding:10px 14px;font-size:14px}
+.pt-form-actions{display:flex;gap:10px;flex-wrap:wrap}
+.pt-detail-desc{white-space:pre-wrap;color:var(--text-soft);line-height:1.9}
+@media (max-width:560px){.pt-row{grid-template-columns:1fr}}

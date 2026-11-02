@@ -43,21 +43,5 @@ padding:0 20px;font-size:14px}
 
 
 
-const cursor = document.querySelector('.custom-cursor');
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.top = `${e.clientY}px`;
-});
-
-// Hover Effect
-document.querySelectorAll('a, button, input, select, textarea')
-    .forEach(element => {
-        element.addEventListener('mouseenter', () => {
-            cursor.classList.add('hover');
-        });
-
-        element.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hover');
-        });
     });

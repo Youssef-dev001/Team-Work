@@ -2022,3 +2022,26 @@ select:focus-visible {
 
     -ms-overflow-style: none;
 }
+
+
+
+
+
+/* Restore Default Mouse Cursor */
+html,
+body,
+body * {
+    cursor: auto !important;
+}
+
+a,
+button,
+[role="button"] {
+    cursor: pointer !important;
+}
+
+input,
+textarea,
+select {
+    cursor: text !important;
+}

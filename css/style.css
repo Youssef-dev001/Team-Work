@@ -2059,3 +2059,21 @@ select:focus-visible {
         0 0 15px rgba(246, 225, 179, 0.9),
         0 0 35px rgba(194, 156, 82, 0.6);
 }
+
+/* ===== Hide Scrollbar ===== */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    display: none;
+    width: 0;
+}
+
+/* Firefox */
+html {
+    scrollbar-width: none;
+}
+
+/* Internet Explorer */
+body {
+    -ms-overflow-style: none;
+}

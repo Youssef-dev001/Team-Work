@@ -1,111 +1,174 @@
 /* =========================================================
    FLOW — Founder chat + verified identity
-   مبني بالكامل على توكنز الهوية (tokens.css) — حمّله بعده.
+   Obsidian & Champagne · مبني بالكامل على tokens.css — حمّله بعده.
+   نفس لغة chat.css: خلفية منقّطة، فقاعات شامبانيا، كبسولة كتابة.
 ========================================================= */
 
-/* زر فتح الشات */
+/* ---------- زر فتح الشات ---------- */
 .flow-founder-btn{font:inherit;white-space:nowrap;cursor:pointer;color:var(--accent)!important;
   background:var(--accent-soft)!important;border:1px solid var(--accent-line)!important;border-radius:999px!important;
-  padding:10px 18px!important;transition:background .25s var(--ease-out),border-color .25s var(--ease-out)}
+  min-height:44px;padding:10px 18px!important;
+  transition:background .25s var(--ease-out),border-color .25s var(--ease-out),transform .25s var(--ease-out)}
 .flow-founder-btn:hover{background:color-mix(in srgb,var(--accent) 14%,transparent)!important;border-color:var(--accent)!important}
+.flow-founder-btn:active{transform:scale(.97)}
 
-/* النافذة */
-.flow-founder-modal{position:fixed;inset:0;z-index:999990;display:grid;place-items:center;padding:18px;
-  background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(6px)}
+/* ---------- النافذة ---------- */
+.flow-founder-modal{position:fixed;inset:0;z-index:999990;display:grid;place-items:center;
+  padding:max(18px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left));
+  background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  animation:fadeIn .25s ease both}
 .flow-founder-modal[hidden]{display:none!important}
-.flow-founder-panel{width:min(760px,100%);height:min(720px,92dvh);display:flex;flex-direction:column;overflow:hidden;
+body:has(.flow-founder-modal:not([hidden])){overflow:hidden}
+
+.flow-founder-panel{position:relative;width:min(780px,100%);height:min(740px,100%);display:flex;flex-direction:column;overflow:hidden;
   font-family:var(--font-body);color:var(--text);background:var(--surface);
   background-image:linear-gradient(180deg,rgba(255,255,255,.028),transparent 40%);
-  border:1px solid var(--border-strong);border-radius:var(--radius-lg);box-shadow:var(--ring),var(--shadow-lg)}
+  border:1px solid var(--border-strong);border-radius:var(--radius-xl);
+  box-shadow:var(--ring),var(--shadow-lg);animation:popIn .45s var(--ease-out) both}
+/* شعرة شامبانيا في الحافة العلوية */
+.flow-founder-panel::before{content:"";position:absolute;top:0;inset-inline:18%;height:1px;z-index:2;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.7}
 
-/* الهيدر */
-.flow-founder-top{display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--surface-2);border-bottom:1px solid var(--border)}
-.flow-founder-top .avatar{width:46px;height:46px;flex:0 0 46px;display:grid;place-items:center;border-radius:50%;
-  font-weight:700;font-size:21px;color:var(--accent-ink);background:linear-gradient(180deg,var(--accent-light),var(--accent-dark))}
-.flow-founder-title{font-family:var(--font-display);font-weight:700;font-size:17px}
-.flow-founder-id{font-size:12px;color:var(--muted);margin-top:3px;direction:ltr;text-align:right;letter-spacing:1px}
-.flow-founder-close{margin-inline-start:auto;width:38px;height:38px;font-size:22px;line-height:1;cursor:pointer;
-  color:var(--text-soft);background:var(--surface-3);border:1px solid var(--border);border-radius:50%;transition:all .25s var(--ease-out)}
-.flow-founder-close:hover{color:var(--text);border-color:var(--border-hover)}
+/* ---------- الهيدر ---------- */
+.flow-founder-top{display:flex;align-items:center;gap:14px;padding:16px 20px;min-width:0;
+  background:var(--surface-2);border-bottom:1px solid var(--border)}
+.flow-founder-top>div{min-width:0}
+.flow-founder-top .avatar{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;border-radius:50%;
+  font-weight:700;font-size:21px;color:var(--accent-ink);
+  background:linear-gradient(180deg,var(--accent-light),var(--accent) 55%,var(--accent-dark));
+  box-shadow:0 0 0 3px var(--accent-soft),0 8px 22px -10px var(--accent-glow)}
+.flow-founder-title{font-family:var(--font-display);font-weight:700;font-size:clamp(16px,2.4vw,19px);
+  display:flex;align-items:center;flex-wrap:wrap;gap:2px;overflow-wrap:anywhere}
+.flow-founder-id{font-size:12px;color:var(--muted);margin-top:3px;direction:ltr;text-align:right;letter-spacing:1px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.flow-founder-close{margin-inline-start:auto;flex:none;width:42px;height:42px;font-size:22px;line-height:1;cursor:pointer;
+  color:var(--text-soft);background:var(--surface-3);border:1px solid var(--border);border-radius:50%;
+  transition:all .25s var(--ease-out)}
+.flow-founder-close:hover{color:var(--text);border-color:var(--border-hover);transform:rotate(90deg)}
 
-/* علامة التوثيق — لمعة شامبانيا متحركة */
+/* ---------- علامة التوثيق ---------- */
 .flow-verified{display:inline-flex;vertical-align:middle;align-items:center;gap:5px;margin-inline-start:7px;padding:3px 9px;
-  border-radius:999px;font-size:10px;font-weight:700;color:var(--accent-ink);
+  border-radius:999px;font-size:10px;font-weight:700;color:var(--accent-ink);white-space:nowrap;
   background:linear-gradient(110deg,var(--accent-dark),var(--accent-light),var(--accent-dark));background-size:200% 100%;
   animation:flowVerified 3s linear infinite;box-shadow:0 0 14px var(--accent-glow)}
 .flow-verified svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.5}
 @keyframes flowVerified{to{background-position:200% 0}}
 
-/* المحتوى والكروت */
-.flow-founder-content{flex:1;min-height:0;overflow:auto;padding:16px}
-.flow-founder-card{padding:14px;margin-bottom:12px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-md);box-shadow:var(--ring)}
+/* ---------- المحتوى والكروت ---------- */
+.flow-founder-content{flex:1;min-height:0;display:flex;flex-direction:column;gap:12px;overflow:auto;overscroll-behavior:contain;
+  padding:16px;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent}
+.flow-founder-content>*{flex:none}
+.flow-founder-card{padding:14px 16px;background:var(--surface-2);border:1px solid var(--border);
+  border-radius:var(--radius-md);box-shadow:var(--ring)}
 .flow-founder-muted{color:var(--muted);font-size:13px;line-height:1.8}
 .flow-founder-status{padding:11px 14px;font-size:13px;line-height:1.8;color:var(--text-soft);
   background:var(--info-soft);border:1px solid color-mix(in srgb,var(--info) 22%,transparent);border-radius:var(--radius-sm)}
 
-/* الأزرار */
-.flow-founder-action{font:inherit;font-weight:700;cursor:pointer;padding:9px 16px;border:0;border-radius:var(--radius-sm);
+/* ---------- الأزرار ---------- */
+.flow-founder-action{font:inherit;font-weight:700;cursor:pointer;min-height:44px;padding:9px 18px;border:0;border-radius:999px;
   color:var(--accent-ink);background:linear-gradient(180deg,var(--accent-light),var(--accent) 55%,var(--accent-dark));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 10px 26px -14px var(--accent-glow);transition:transform .2s var(--ease-out),filter .2s}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 10px 26px -14px var(--accent-glow);
+  transition:transform .2s var(--ease-out),filter .2s}
 .flow-founder-action:hover:not(:disabled){filter:brightness(1.06);transform:translateY(-1px)}
+.flow-founder-action:active:not(:disabled){transform:scale(.97)}
 .flow-founder-action.secondary{color:var(--text-soft);background:var(--surface-3);border:1px solid var(--border-strong);box-shadow:none}
 .flow-founder-action.danger{color:var(--danger);background:var(--danger-soft);border:1px solid color-mix(in srgb,var(--danger) 30%,transparent);box-shadow:none}
 .flow-founder-action:disabled,.flow-founder-icon:disabled{opacity:.5;cursor:not-allowed}
 
-/* الطلبات والقوائم */
+/* ---------- الطلبات والقوائم ---------- */
 .flow-founder-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .flow-founder-list{display:grid;gap:9px}
-.flow-founder-request{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.flow-founder-request small{display:block;margin-top:4px;color:var(--muted)}
+.flow-founder-request{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;min-width:0}
+.flow-founder-request>*{min-width:0}
+.flow-founder-request small{display:block;margin-top:4px;color:var(--muted);overflow-wrap:anywhere}
 .flow-founder-count{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;margin-inline-start:6px;
   font-size:12px;font-weight:700;color:var(--accent-ink);background:var(--accent);border-radius:999px}
 
-/* المحادثة */
-.flow-founder-chat{display:flex;flex-direction:column;gap:9px;min-height:240px;max-height:390px;overflow:auto;padding:14px;margin:12px 0;
-  background:radial-gradient(circle at 20% 0,var(--accent-soft),transparent 55%),var(--bg);
-  border:1px solid var(--border);border-radius:var(--radius-md)}
-.flow-founder-msg{max-width:82%;align-self:flex-end;padding:10px 14px;line-height:1.7;overflow-wrap:anywhere;white-space:normal;
-  color:var(--text);background:var(--surface-3);border:1px solid var(--border);border-radius:var(--radius-md)}
-.flow-founder-msg.mine{align-self:flex-start;color:var(--accent-ink);border-color:transparent;
-  background:linear-gradient(180deg,var(--accent-light),var(--accent))}
-.flow-founder-msg small{display:block;margin-top:5px;font-size:10px;opacity:.65}
-.flow-founder-msg a{color:inherit;text-decoration:underline}
-.flow-founder-msg img,.flow-founder-msg video{display:block;max-width:min(260px,100%);max-height:220px;margin-top:7px;border-radius:var(--radius-sm)}
-.flow-founder-msg audio{display:block;max-width:100%;margin-top:7px}
+/* ---------- المحادثة (نفس ستايل chat.css) ---------- */
+.flow-founder-chat{flex:1 1 auto;display:flex;flex-direction:column;gap:6px;min-height:240px;overflow:auto;overscroll-behavior:contain;
+  padding:18px;margin:0;scrollbar-width:thin;scrollbar-color:var(--border-strong) transparent;
+  background:
+    radial-gradient(circle at 20% 0,var(--accent-soft),transparent 55%),
+    radial-gradient(color-mix(in srgb,var(--accent) 7%,transparent) 1px,transparent 1px) 0 0/22px 22px,
+    var(--bg);
+  border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--ring)}
+.flow-founder-chat::-webkit-scrollbar{width:6px}
+.flow-founder-chat::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:99px}
 
-/* الكتابة */
-.flow-founder-compose{display:flex;gap:8px;align-items:flex-end}
-.flow-founder-compose textarea{flex:1;min-width:0;min-height:44px;max-height:110px;resize:vertical;padding:11px 14px;font:inherit;
-  color:var(--text);background:var(--surface-2);border:1px solid var(--border-strong);border-radius:var(--radius-md)}
+.flow-founder-msg{max-width:min(520px,82%);align-self:flex-end;padding:10px 14px 8px;line-height:1.8;overflow-wrap:anywhere;white-space:pre-wrap;
+  color:var(--text);background:var(--surface-2);border:1px solid var(--border);
+  border-radius:18px;border-end-end-radius:6px;box-shadow:0 6px 18px -12px rgba(0,0,0,.6);
+  animation:fadeUp .35s var(--ease-out) both}
+.flow-founder-msg.mine{align-self:flex-start;color:var(--accent-ink);border-color:transparent;
+  border-end-end-radius:18px;border-end-start-radius:6px;
+  background:linear-gradient(180deg,var(--accent-light),var(--accent) 60%,var(--accent-dark))}
+.flow-founder-msg small{display:block;margin-top:3px;font-size:11px;opacity:.65}
+.flow-founder-msg a{color:inherit;text-decoration:underline;overflow-wrap:anywhere}
+.flow-founder-msg img,.flow-founder-msg video{display:block;max-width:min(280px,100%);max-height:240px;margin-top:7px;border-radius:var(--radius-sm);object-fit:cover}
+.flow-founder-msg audio{display:block;width:min(260px,100%);margin-top:7px}
+
+/* ---------- الكتابة ---------- */
+.flow-founder-compose{display:flex;gap:8px;align-items:flex-end;padding:2px 0 0}
+.flow-founder-compose textarea{flex:1;min-width:0;min-height:46px;max-height:120px;resize:none;padding:12px 18px;font:inherit;font-size:15px;line-height:1.6;
+  color:var(--text);background:var(--surface-2);border:1px solid var(--border-strong);border-radius:24px}
+.flow-founder-compose textarea::placeholder{color:var(--muted-2)}
 .flow-founder-compose textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
 .flow-founder-compose input{display:none}
-.flow-founder-icon{width:43px;height:43px;flex:0 0 43px;font-size:18px;cursor:pointer;color:var(--text-soft);
-  background:var(--surface-2);border:1px solid var(--border-strong);border-radius:var(--radius-md);transition:all .25s var(--ease-out)}
+.flow-founder-compose .flow-founder-action{flex:none;height:46px;padding:0 22px}
+.flow-founder-icon{width:46px;height:46px;flex:0 0 46px;font-size:18px;cursor:pointer;color:var(--text-soft);
+  background:var(--surface-2);border:1px solid var(--border-strong);border-radius:50%;transition:all .25s var(--ease-out)}
 .flow-founder-icon:hover:not(:disabled){color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
 
-/* قسم الأدمن */
+/* ---------- قسم الأدمن ---------- */
 .flow-founder-admin-section{scroll-margin-top:90px}
 .flow-founder-admin-section .section-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
-.flow-founder-admin-section #flow-founder-inline{margin-top:16px;padding:16px;color:var(--text);
+.flow-founder-admin-section #flow-founder-inline{margin-top:16px;padding:clamp(12px,2.4vw,18px);color:var(--text);
   background:var(--surface);border:1px solid var(--accent-line);border-radius:var(--radius-lg);box-shadow:var(--ring)}
 .flow-founder-admin-section .flow-founder-request{padding:12px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm)}
 .flow-founder-admin-section .flow-founder-card{margin-bottom:14px}
+.flow-founder-admin-section #flow-founder-inline .flow-founder-chat{flex:none;height:clamp(320px,56dvh,560px)}
 .flow-founder-conversation-heading{justify-content:space-between}
 
-/* المؤشر الأصلي للّمس وتقليل الحركة */
+/* ---------- تابلت ---------- */
+@media (max-width:820px){
+  .flow-founder-panel{height:min(740px,100%)}
+}
+
+/* ---------- موبايل: شاشة كاملة ---------- */
+@media (max-width:560px){
+  .flow-founder-modal{padding:0}
+  .flow-founder-panel{width:100%;height:100vh;height:100dvh;border:0;border-radius:0}
+  .flow-founder-panel::before{inset-inline:10%}
+  .flow-founder-top{padding:calc(12px + env(safe-area-inset-top)) 14px 12px}
+  .flow-founder-top .avatar{width:42px;height:42px;flex-basis:42px;font-size:18px}
+  .flow-founder-content{padding:11px 11px calc(11px + env(safe-area-inset-bottom))}
+  .flow-founder-chat{padding:12px;min-height:0;border-radius:var(--radius-md)}
+  .flow-founder-compose{gap:6px}
+  .flow-founder-compose textarea{font-size:16px;padding:11px 16px}
+  .flow-founder-icon{width:44px;height:44px;flex-basis:44px}
+  .flow-founder-compose .flow-founder-action{padding:0 16px}
+  .flow-founder-msg{max-width:90%}
+  .flow-founder-request{flex-direction:column;align-items:stretch}
+  .flow-founder-request .flow-founder-row{justify-content:stretch}
+  .flow-founder-request .flow-founder-action{flex:1}
+}
+
+/* ---------- موبايل أفقي / شاشات قصيرة ---------- */
+@media (max-height:500px) and (orientation:landscape){
+  .flow-founder-modal{padding:0}
+  .flow-founder-panel{width:100%;height:100dvh;border-radius:0;border:0}
+  .flow-founder-top{padding:8px 16px}
+  .flow-founder-top .avatar{width:36px;height:36px;flex-basis:36px;font-size:16px}
+  .flow-founder-chat{min-height:0}
+}
+
+/* ---------- لمس + تقليل الحركة ---------- */
 @media(pointer:coarse),(prefers-reduced-motion:reduce){
   *,*::before,*::after{cursor:auto!important}
   .custom-cursor{display:none!important}
   .flow-verified{animation:none}
 }
-@media(max-width:560px){
-  .flow-founder-modal{padding:8px}
-  .flow-founder-panel{height:94dvh;border-radius:var(--radius-md)}
-  .flow-founder-top{padding:12px}
-  .flow-founder-content{padding:11px}
-  .flow-founder-compose{gap:6px}
-  .flow-founder-icon{width:38px;height:40px;flex-basis:38px}
-  .flow-founder-compose textarea{font-size:14px}
-  .flow-founder-action{padding:9px 10px}
-  .flow-founder-msg{max-width:94%}
+@media (hover:none){
+  .flow-founder-close:hover{transform:none}
+  .flow-founder-action:hover:not(:disabled){transform:none}
 }

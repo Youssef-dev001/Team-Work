@@ -1,41 +1,68 @@
 /* =========================================================
    Personal tasks — يستخدم توكنز الهوية (tokens.css) فقط
+   متجاوب بالكامل: موبايل · تابلت · لابتوب · شاشات كبيرة
 ========================================================= */
-.dash-tabs{display:inline-flex;gap:6px;padding:5px;margin:0 0 28px;background:var(--surface);
-  border:1px solid var(--border);border-radius:999px;box-shadow:var(--ring)}
-.dash-tab{font:inherit;font-weight:500;color:var(--muted);background:none;border:0;cursor:pointer;
+
+/* ---------- التابات ---------- */
+.dash-tabs{display:inline-flex;gap:6px;max-width:100%;padding:5px;margin:0 0 28px;background:var(--surface);
+  border:1px solid var(--border);border-radius:999px;box-shadow:var(--ring);
+  overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none}
+.dash-tabs::-webkit-scrollbar{display:none}
+.dash-tab{flex:none;min-height:44px;font:inherit;font-weight:500;white-space:nowrap;color:var(--muted);background:none;border:0;cursor:pointer;
   padding:10px 22px;border-radius:999px;transition:color .25s var(--ease-out),background .25s var(--ease-out)}
 .dash-tab:hover{color:var(--text)}
 .dash-tab.is-active{color:var(--accent-ink);
   background:linear-gradient(180deg,var(--accent-light),var(--accent) 55%,var(--accent-dark))}
 
+/* ---------- العنوان والفلاتر ---------- */
 .pt-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.pt-heading>*{min-width:0}
 .pt-filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
-.pt-chip{font:inherit;font-size:14px;color:var(--muted);background:var(--surface);cursor:pointer;
+.pt-chip{font:inherit;font-size:14px;min-height:38px;color:var(--muted);background:var(--surface);cursor:pointer;
   border:1px solid var(--border);border-radius:999px;padding:7px 16px;transition:all .25s var(--ease-out)}
 .pt-chip:hover{border-color:var(--border-hover);color:var(--text)}
 .pt-chip.is-active{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
 
-.pt-meta{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:0 0 10px}
+/* ---------- الكروت ---------- */
+.pt-meta{display:flex;gap:6px 14px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin:0 0 10px}
 .pt-meta .is-overdue{color:var(--danger)}
 .pt-card-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .pt-card-actions .pt-spacer{flex:1}
 .pt-danger{color:var(--danger)!important}
 .task-card.is-done h3{opacity:.55;text-decoration:line-through}
 
+/* ---------- الفورم ---------- */
 .pt-form{display:grid;gap:18px}
-.pt-form label{display:grid;gap:8px;color:var(--text-soft);font-size:14px}
-.pt-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pt-form label{display:grid;gap:8px;color:var(--text-soft);font-size:14px;min-width:0}
+.pt-form input,.pt-form select,.pt-form textarea{min-width:0}
+.pt-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .pt-videos-head{color:var(--text-soft);font-size:14px;margin-bottom:8px}
 .pt-video-row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
-.pt-video-row input{flex:1;direction:ltr;text-align:left}
-.pt-video-row button{flex:none;width:42px;height:42px;font:inherit;font-size:20px;cursor:pointer;
-  color:var(--muted);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.pt-video-row input{flex:1;min-width:0;direction:ltr;text-align:left}
+.pt-video-row button{flex:none;width:44px;height:44px;font:inherit;font-size:20px;cursor:pointer;
+  color:var(--muted);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);
+  transition:color .2s,border-color .2s}
 .pt-video-row button:hover{color:var(--danger);border-color:var(--danger)}
-.pt-add-video{font:inherit;color:var(--accent);background:none;border:1px dashed var(--accent-line);
-  border-radius:var(--radius-sm);padding:10px 14px;cursor:pointer;width:100%}
+.pt-add-video{font:inherit;min-height:44px;color:var(--accent);background:none;border:1px dashed var(--accent-line);
+  border-radius:var(--radius-sm);padding:10px 14px;cursor:pointer;width:100%;transition:background .2s}
 .pt-add-video:hover{background:var(--accent-soft)}
-.pt-error{margin:0;color:var(--danger);background:var(--danger-soft);border-radius:var(--radius-sm);padding:10px 14px;font-size:14px}
+.pt-error{margin:0;color:var(--danger);background:var(--danger-soft);border-radius:var(--radius-sm);padding:10px 14px;font-size:14px;overflow-wrap:anywhere}
 .pt-form-actions{display:flex;gap:10px;flex-wrap:wrap}
-.pt-detail-desc{white-space:pre-wrap;color:var(--text-soft);line-height:1.9}
-@media (max-width:560px){.pt-row{grid-template-columns:1fr}}
+.pt-detail-desc{white-space:pre-wrap;overflow-wrap:anywhere;color:var(--text-soft);line-height:1.9}
+
+/* ---------- تابلت ---------- */
+@media (max-width:820px){
+  .pt-heading{align-items:stretch}
+}
+
+/* ---------- موبايل ---------- */
+@media (max-width:560px){
+  .pt-row{grid-template-columns:1fr}
+  .dash-tabs{display:flex;width:100%;margin-bottom:22px}
+  .dash-tab{flex:1 0 auto;padding:10px 16px}
+  .pt-heading .primary-btn,.pt-heading .secondary-btn{width:100%}
+  .pt-form input,.pt-form select,.pt-form textarea{font-size:16px} /* يمنع زوم iOS */
+  .pt-form-actions{flex-direction:column-reverse}
+  .pt-form-actions>*{width:100%}
+  .pt-card-actions{gap:8px}
+}

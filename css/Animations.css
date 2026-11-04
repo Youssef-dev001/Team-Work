@@ -132,9 +132,10 @@ body.page-leaving {
         border-color 0.35s ease;
 }
 
-.stat-card::before,
-.task-card::before,
-.team-row::before {
+/* ::after (مش ::before) عشان ما نكسرش الخط/الريل بتوع dashboard.css */
+.stat-card::after,
+.task-card::after,
+.team-row::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -158,9 +159,9 @@ body.page-leaving {
         box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.75);
     }
 
-    .stat-card:hover::before,
-    .task-card:hover::before,
-    .team-row:hover::before {
+    .stat-card:hover::after,
+    .task-card:hover::after,
+    .team-row:hover::after {
         opacity: 1;
     }
 }
@@ -388,7 +389,7 @@ a.file-chip:hover {
 
 .toast-root {
     position: fixed;
-    top: 18px;
+    top: calc(18px + env(safe-area-inset-top, 0px));
     left: 50%;
     transform: translateX(-50%);
     z-index: 10001;
@@ -491,9 +492,9 @@ a.file-chip:hover {
     padding: 28px 24px 22px;
     text-align: center;
     border-radius: 20px;
-    background: #1d1914;
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--surface-2);
+    color: var(--text);
+    border: 1px solid var(--border-strong);
     box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.9);
     animation: popIn 0.45s var(--ease-spring) both;
 }
